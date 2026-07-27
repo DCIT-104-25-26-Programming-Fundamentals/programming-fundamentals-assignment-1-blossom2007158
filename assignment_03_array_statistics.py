@@ -37,13 +37,7 @@
 
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-##!/usr/bin/env python3
-"""
-Array Statistics Calculator
-Implements sum, average, maximum, and minimum calculations without using
-Python's built-in sum(), max(), or min() functions.
-"""
-
+# 
 import sys
 
 
