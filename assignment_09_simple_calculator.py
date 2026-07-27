@@ -66,5 +66,88 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+# 
+def add(num1, num2):
+    return num1 + num2
+
+def subtract(num1, num2):
+    return num1 - num2
+
+def multiply(num1, num2):
+    return num1 * num2
+
+def divide(num1, num2):
+    if num2 == 0:
+        return None
+    return round(num1 / num2, 2)
+
+def modulus(num1, num2):
+    if num2 == 0:
+        return None
+    return num1 % num2
+
+def exponentiate(num1, num2):
+    return num1 ** num2
+
+def display_menu():
+    print("\n============================")
+    print("     SIMPLE CALCULATOR")
+    print("============================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+def main():
+    while True:
+        display_menu()
+        choice = input("Select an operation (1-7): ")
+        
+        if choice == "7":
+            print("Goodbye!")
+            break
+        
+        if choice not in ["1", "2", "3", "4", "5", "6"]:
+            print("Invalid choice. Please select 1-7.")
+            continue
+        
+        try:
+            num1 = float(input("Enter first number : "))
+            num2 = float(input("Enter second number: "))
+        except ValueError:
+            print("Invalid input. Please enter valid numbers.")
+            continue
+        
+        result = None
+        operator = ""
+        
+        if choice == "1":
+            result = add(num1, num2)
+            operator = "+"
+        elif choice == "2":
+            result = subtract(num1, num2)
+            operator = "-"
+        elif choice == "3":
+            result = multiply(num1, num2)
+            operator = "*"
+        elif choice == "4":
+            result = divide(num1, num2)
+            operator = "/"
+        elif choice == "5":
+            result = modulus(num1, num2)
+            operator = "%"
+        elif choice == "6":
+            result = exponentiate(num1, num2)
+            operator = "**"
+        
+        if result is None:
+            print("Error: Cannot divide by zero.")
+        else:
+            print(f"Result: {num1} {operator} {num2} = {result}")
+
+if __name__ == "__main__":
+    main()
 
