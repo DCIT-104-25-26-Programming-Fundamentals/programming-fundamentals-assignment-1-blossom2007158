@@ -88,5 +88,80 @@
 
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def add_student():
+    """Add a new student record to the system."""
+    name = input("Student name: ")
+    student_id = int(input("Student ID: "))
+    num_scores = int(input("How many scores? "))
+    scores = []
+    for i in range(1, num_scores + 1):
+        score = float(input(f"Enter score {i}: "))
+        scores.append(score)
+    
+    student = {
+        "name": name,
+        "id": student_id,
+        "scores": scores
+    }
+    students.append(student)
+    print(f'Student "{name}" added successfully.\n')
 
+def display_all_students():
+    """Display all students in a formatted table."""
+    if not students:
+        print("No students have been added yet.\n")
+        return
+    
+    print("-" * 60)
+    print(f"{'Name':<20} {'ID':<12} {'Scores':<20} {'Average':<10}")
+    print("-" * 60)
+    
+    for student in students:
+        name = student["name"]
+        student_id = student["id"]
+        scores = student["scores"]
+        scores_str = ", ".join(str(int(s)) for s in scores)
+        average = sum(scores) / len(scores)
+        print(f"{name:<20} {student_id:<12} {scores_str:<20} {average:.2f}")
+    
+    print("-" * 60 + "\n")
+
+def calculate_average():
+    """Calculate and display the average score for a specific student."""
+    student_id = int(input("Enter student ID: "))
+    
+    for student in students:
+        if student["id"] == student_id:
+            average = sum(student["scores"]) / len(student["scores"])
+            print(f"{student['name']}'s average score: {average:.2f}\n")
+            return
+    
+    print("Student ID not found.\n")
+
+def menu():
+    """Display the menu and handle user choice."""
+    while True:
+        print("=" * 40)
+        print("   STUDENT RECORD SYSTEM MENU")
+        print("=" * 40)
+        print("1. Add student")
+        print("2. Display all students")
+        print("3. Calculate average score")
+        print("4. Quit")
+        choice = input("Enter your choice (1-4): ")
+        
+        if choice == "1":
+            add_student()
+        elif choice == "2":
+            display_all_students()
+        elif choice == "3":
+            calculate_average()
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter 1-4.\n")
+
+# Run the program
+if __name__ == "__main__":
+    menu()
