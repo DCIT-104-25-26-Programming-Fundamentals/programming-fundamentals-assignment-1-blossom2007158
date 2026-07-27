@@ -33,5 +33,30 @@
 
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+#import math
+
+def is_prime(n: int) -> bool:
+    """Return True if n is prime, otherwise False."""
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    limit = math.isqrt(n)
+    for i in range(3, limit + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+if __name__ == "__main__":
+    try:
+        num = int(input("Enter a number: "))
+    except ValueError:
+        print("Please enter an integer.")
+    else:
+        if is_prime(num):
+            print(f"{num} is a prime number.")
+        else:
+            print(f"{num} is NOT a prime number.")
 
