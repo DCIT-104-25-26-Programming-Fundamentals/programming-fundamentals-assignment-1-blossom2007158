@@ -47,5 +47,45 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+# def part_a():
+    """Print the first N terms of the Fibonacci sequence."""
+    try:
+        n = int(input("How many terms? "))
+        if n <= 0:
+            print("Error: N must be a positive integer.")
+            return
+        
+        fib_sequence = []
+        a, b = 0, 1
+        for _ in range(n):
+            fib_sequence.append(a)
+            a, b = b, a + b
+        
+        print("Fibonacci sequence:", " ".join(map(str, fib_sequence)))
+    except ValueError:
+        print("Error: N must be a positive integer.")
+
+
+def part_b():
+    """Check if a number belongs to the Fibonacci sequence."""
+    try:
+        num = int(input("Enter a number to check: "))
+        
+        # Generate Fibonacci numbers until we reach or exceed the input number
+        a, b = 0, 1
+        while a < num:
+            a, b = b, a + b
+        
+        if a == num:
+            print(f"{num} is a Fibonacci number.")
+        else:
+            print(f"{num} is NOT a Fibonacci number.")
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+
+
+# Main program
+if __name__ == "__main__":
+    part_a()
+    part_b()
 
